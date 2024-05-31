@@ -7,6 +7,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 public class ControladorTabuleiro {
+	@FXML
+	private ImageView reiniciar;
+
+	@FXML
+	private ImageView sair;
 
     @FXML
     private StackPane stackPane;
@@ -21,6 +26,19 @@ public class ControladorTabuleiro {
     private ImageView Oframe;
     
     private ImageView[][] ImageViews;
+    
+    @FXML
+    private ImageView winColuna;
+
+    @FXML
+    private ImageView winDiagonalPrin;
+
+    @FXML
+    private ImageView winDiagonalSec;
+
+    @FXML
+    private ImageView winLine;
+
 
 
     @FXML

@@ -11,20 +11,50 @@
             <children>
                 <ImageView fx:id="tabuleiro" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../Downloads/Jogo%20da%20Velha/tabuleiro.jpg" />
+                        <Image url="@../../img/tabuleiro.jpg" />
                     </image>
                 </ImageView>
             </children>
         </VBox>
         <ImageView fx:id="Xframe" fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-150.0" translateY="-40.0" StackPane.alignment="CENTER">
             <image>
-                <Image url="@../../../../Downloads/X_jogo_da_velha.png" />
+                <Image url="@../../img/X_jogo_da_velha.png" />
             </image>
         </ImageView>
         <ImageView fx:id="Oframe" fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-150.0" translateY="-40.0" StackPane.alignment="CENTER">
             <image>
-                <Image url="@../../../../Downloads/O_jogo_da_velha.png" />
+                <Image url="@../../img/O_jogo_da_velha.png" />
             </image>
         </ImageView>
+      <ImageView fx:id="winLine" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/linha_sem%20_fundo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="winColuna" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/diagonal_principal-sem_fundo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="winDiagonalPrin" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/diagonal_principal-sem_fundo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sair" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true" translateX="270.0" translateY="-270.0">
+         <image>
+            <Image url="@../../img/icone_sair-re.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="reiniciar" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true" translateX="240.0" translateY="-270.0">
+         <image>
+            <Image url="@../../img/icone_reiniciar-re.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="winDiagonalSec" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/diagonal_sec-sem_fundo.png" />
+         </image>
+      </ImageView>
     </children>
 </StackPane>
