@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="stackPane" onMouseClicked="#AcaoDoTabuleiro" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladorTabuleiro">
+    <children>
+        <VBox alignment="CENTER" prefHeight="500.0" prefWidth="500.0">
+            <children>
+                <ImageView fx:id="tabuleiro" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../Downloads/Jogo%20da%20Velha/tabuleiro.jpg" />
+                    </image>
+                </ImageView>
+            </children>
+        </VBox>
+        <ImageView fx:id="Xframe" fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-150.0" translateY="-40.0" StackPane.alignment="CENTER">
+            <image>
+                <Image url="@../../../../Downloads/X_jogo_da_velha.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="Oframe" fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-150.0" translateY="-40.0" StackPane.alignment="CENTER">
+            <image>
+                <Image url="@../../../../Downloads/O_jogo_da_velha.png" />
+            </image>
+        </ImageView>
+    </children>
+</StackPane>
