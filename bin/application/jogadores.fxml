@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladorIniciar">
+    <children>
+        <VBox alignment="CENTER" prefHeight="500.0" prefWidth="500.0">
+            <children>
+                <ImageView fx:id="tabuleiro" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../img/inicial.jpg" />
+                    </image>
+                </ImageView>
+            </children>
+        </VBox>
+        <ImageView fx:id="sair" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#AcaoDoInicial" pickOnBounds="true" preserveRatio="true" translateX="270.0" translateY="-270.0">
+            <image>
+                <Image url="@../../img/icone_sair-re.png" />
+            </image>
+        </ImageView>
+      <ImageView fx:id="jogador1Img" fitHeight="128.0" fitWidth="278.0" onMouseClicked="#AcaoDoInicial" pickOnBounds="true" preserveRatio="true" translateX="-150.0">
+         <image>
+            <Image url="@../../img/jogador1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="comecar" fitHeight="112.0" fitWidth="263.0" onMouseClicked="#AcaoDoInicial" pickOnBounds="true" preserveRatio="true" translateY="150.0">
+         <image>
+            <Image url="@../../img/começar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="jogador2Img" fitHeight="121.0" fitWidth="267.0" onMouseClicked="#AcaoDoInicial" pickOnBounds="true" preserveRatio="true" translateX="120.0">
+         <image>
+            <Image url="@../../img/jogador2.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="fieldjogador1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#AcaoDoInicial" prefHeight="33.0" prefWidth="237.0" translateX="-150.0" translateY="20.0" 
+      style="-fx-background-color: pink;" />
+     <TextField fx:id="fieldJogador2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#AcaoDoInicial" prefHeight="33.0" prefWidth="237.0" translateX="130.0" translateY="20.0" 
+      style="-fx-background-color: pink;" />
+     </children>
+</StackPane>

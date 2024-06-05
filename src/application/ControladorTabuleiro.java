@@ -1,4 +1,7 @@
 package application;
+import Logica.Tabuleiro;
+import Logica.Jogo;
+import Logica.Jogador;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -38,11 +41,20 @@ public class ControladorTabuleiro {
 
     @FXML
     private ImageView winLine;
-
-
+    
+    private Jogo jogo;
+    
+    
+    public void setJogo(Jogo jogo) {
+       this.jogo=jogo; 
+       System.out.println("nome jog2:"+jogo.getJogadorO().getNome());
+       System.out.println("nome jog1:"+jogo.getJogadorX().getNome());
+    }
 
     @FXML
     void AcaoDoTabuleiro(MouseEvent event) {
+    	
+    	
        
     }
     @FXML

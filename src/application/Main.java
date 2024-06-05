@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Tabuleiro.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("jogadores.fxml"));
         StackPane root = loader.load(); // Carrega o arquivo FXML
 
         Scene scene = new Scene(root, 600, 600);

@@ -5,56 +5,57 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="stackPane" onMouseClicked="#AcaoDoTabuleiro" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladorTabuleiro">
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladorTabuleiro">
     <children>
         <VBox alignment="CENTER" prefHeight="500.0" prefWidth="500.0">
             <children>
-                <ImageView fx:id="tabuleiro" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="tabuleiro" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../img/tabuleiro.jpg" />
                     </image>
                 </ImageView>
             </children>
         </VBox>
-        <ImageView fx:id="Xframe" fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-150.0" translateY="-40.0" StackPane.alignment="CENTER">
+        <!-- Adicione os eventos mouseClicked apenas aos elementos interativos -->
+        <ImageView fx:id="Xframe" fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-150.0" translateY="-40.0" StackPane.alignment="CENTER" onMouseClicked="#AcaoDoTabuleiro">
             <image>
                 <Image url="@../../img/X_jogo_da_velha.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="Oframe" fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-150.0" translateY="-40.0" StackPane.alignment="CENTER">
+        <ImageView fx:id="Oframe" fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-150.0" translateY="-40.0" StackPane.alignment="CENTER" onMouseClicked="#AcaoDoTabuleiro">
             <image>
                 <Image url="@../../img/O_jogo_da_velha.png" />
             </image>
         </ImageView>
-      <ImageView fx:id="winLine" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/linha_sem%20_fundo.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="winColuna" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/diagonal_principal-sem_fundo.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="winDiagonalPrin" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/diagonal_principal-sem_fundo.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sair" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true" translateX="270.0" translateY="-270.0">
-         <image>
-            <Image url="@../../img/icone_sair-re.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="reiniciar" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true" translateX="240.0" translateY="-270.0">
-         <image>
-            <Image url="@../../img/icone_reiniciar-re.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="winDiagonalSec" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#AcaoDoTabuleiro" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/diagonal_sec-sem_fundo.png" />
-         </image>
-      </ImageView>
+        <ImageView fx:id="winLine" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../img/linha_sem%20_fundo.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="winColuna" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../img/diagonal_principal-sem_fundo.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="winDiagonalPrin" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../img/diagonal_principal-sem_fundo.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="sair" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" translateX="270.0" translateY="-270.0" onMouseClicked="#AcaoDoTabuleiro">
+            <image>
+                <Image url="@../../img/icone_sair-re.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="reiniciar" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" translateX="240.0" translateY="-270.0" onMouseClicked="#AcaoDoTabuleiro">
+            <image>
+                <Image url="@../../img/icone_reiniciar-re.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="winDiagonalSec" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../img/diagonal_sec-sem_fundo.png" />
+            </image>
+        </ImageView>
     </children>
 </StackPane>
