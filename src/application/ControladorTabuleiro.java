@@ -1,107 +1,203 @@
 package application;
-import Logica.Tabuleiro;
-import Logica.Jogo;
-import Logica.Jogador;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Point2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+import Logica.*;
 
 public class ControladorTabuleiro {
+
+	@FXML
+	private ImageView Oframe;
+
+	@FXML
+	private Label VezJogador;
+
+	@FXML
+	private ImageView Xframe;
+
+	@FXML
+	private VBox Xframes;
+
+	@FXML
+	private VBox background;
+
 	@FXML
 	private ImageView reiniciar;
 
 	@FXML
 	private ImageView sair;
 
-    @FXML
-    private StackPane stackPane;
+	@FXML
+	private StackPane stackPane;
 
-    @FXML
-    private ImageView tabuleiro;
+	@FXML
+	private ImageView tabuleiro;
 
-    @FXML
-    private ImageView Xframe;
+	private Jogo jogo;
+	
+    private double larguraX = 130;
+    private double alturaX = 130;
 
-    @FXML
-    private ImageView Oframe;
-    
-    private ImageView[][] ImageViews;
-    
-    @FXML
-    private ImageView winColuna;
 
-    @FXML
-    private ImageView winDiagonalPrin;
+	public void setTextoPlayerInicial(Jogador jogador1) {
+		VezJogador.setText("O jogador Inicial é " + jogador1.getNome());
+	}
 
-    @FXML
-    private ImageView winDiagonalSec;
+	public void setJogo(Jogo jogo) {
+		this.jogo = jogo;
+		//System.out.println("nome jog2: " + jogo.getJogadorO().getNome()+" symbol "+ jogo.getJogadorO().getSimbolo());
+		//System.out.println("nome jog1:" + jogo.getJogadorX().getNome()+" symbol "+ jogo.getJogadorX().getSimbolo());
+	}
 
-    @FXML
-    private ImageView winLine;
-    
-    private Jogo jogo;
-    
-    
-    public void setJogo(Jogo jogo) {
-       this.jogo=jogo; 
-       System.out.println("nome jog2:"+jogo.getJogadorO().getNome());
-       System.out.println("nome jog1:"+jogo.getJogadorX().getNome());
-    }
+	private Quadrante procurarQuadrante(double xImageView, double yImageView) {
+	    Quadrante quadrante = new Quadrante();
+	    double aux=1;
+	    double auxy=0;
+	  
 
-    @FXML
-    void AcaoDoTabuleiro(MouseEvent event) {
-    	
-    	
-       
-    }
-    @FXML
-    void initialize() {
-    	Oframe.setVisible(false);
-    	Xframe.setVisible(false);
-        // Define a largura e altura das células da matriz
-        double larguraX = 130;
-        double alturaX = 130;
-        double incrementar=0;
+	    for (double x = 0; x <= 600; x += 200) {
+	    	auxy=0;	
+	    	
+	        for (double y = 180; y <= 600; y += 140) {
+	            if (xImageView >= x && xImageView <= x + 200 && yImageView >= y && yImageView <= y + 140) {
+	            	double cellX =2.5* aux * larguraX;  // larguraX = 130
+	                double cellY =2.2*  auxy * alturaX;    // alturaX = 130
 
-        // Posiciona as imagens X e O dentro do StackPane
-        for (int linha = 0; linha< 3; linha++) {
-            incrementar-=150;
-            for (int coluna = 0; coluna < 3; coluna++) {
-                ImageView xzinho = new ImageView();
-                ImageView bolinha = new ImageView(); //bolinha
+	                //System.out.println("Clicou no quadrante coluna "+aux +"linha " +auxy);
+	              //  System.out.println("Clicou no quadrante  "+cellY +" " + cellX);
+	                quadrante.setX(cellX);//você é a coluna
+	                quadrante.setY(cellY);//vocÊ é a largura
+	                quadrante.setLinha((int)(aux-1));
+	                quadrante.setColuna((int)auxy);
+	               // System.out.println("x "+ quadrante.getLinha() +"y"+quadrante.getColuna() );
+	                return quadrante;
+	            }
+	            auxy++;
+	       
+	        }
+	        aux++;
+	    }
 
-                xzinho.setFitWidth(larguraX);
-                xzinho.setFitHeight(alturaX);
-                bolinha.setFitWidth(larguraX);
-                bolinha.setFitHeight(alturaX);
+	    return quadrante;
+	}
+	private ImageView criarXouO(ImageView frame) {
+	    ImageView novaImageView = new ImageView();
+	    novaImageView.setImage(frame.getImage());
+	    novaImageView.setFitWidth(130);
+	    novaImageView.setFitHeight(130);
+	    return novaImageView;
+	}
+	private void resetar(boolean bool, String nome) throws IOException {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("vitoria.fxml"));
+	    Parent root = loader.load();
+	    Scene scene = new Scene(root);
 
-                // Calcula as coordenadas X e Y para posicionar a célula na grade
-                double cellX = 2 * linha * larguraX;
-                double cellY = 2 * coluna * alturaX;
+	    // Check if the stackPane is attached to a scene and the scene is attached to a window
+	    if (stackPane.getScene() != null && stackPane.getScene().getWindow() != null) {
+	        Stage stage = (Stage) stackPane.getScene().getWindow();
+	        stage.setScene(scene);
+	        ControladorVelha controller = loader.getController();
+	        controller.setWin(bool);
+	        controller.setNomeVencedor(nome);
+	        controller.customInitialize(); // Call custom initialization method
+	    } else {
+	        //System.err.println("Error: Scene or window is null.");
+	    	//algum erro chato de runtime
+	    }
+	}
 
-                // Define a posição da célula no StackPane
-                StackPane.setMargin(xzinho, new Insets(cellY - 70, 0, 0, cellX - 300));
-                StackPane.setMargin(bolinha, new Insets(cellY - 70, 0, 0, cellX - 300));
 
-                // Define as imagens X e O
-                xzinho.setImage(Xframe.getImage());
-                bolinha.setImage(Oframe.getImage());
+    private void retornar() throws IOException {
+   	 FXMLLoader loader = new FXMLLoader(getClass().getResource("jogadores.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) stackPane.getScene().getWindow();
+        stage.setScene(scene);
+     
+        
+        
+   }
+ 
+	@FXML
+	void AcaoDoTabuleiro(MouseEvent event) throws IOException {
+	
+	    
+	    if (event.getSource() == tabuleiro) {
+	        double xMouse = event.getSceneX();
+	        double yMouse = event.getSceneY();
 
-                // Adiciona o EventHandler para cada ImageView
-                xzinho.setOnMouseClicked(event -> {
-                    xzinho.setVisible(false); // Torna a ImageView X invisível quando clicada
-                });
-                bolinha.setOnMouseClicked(event -> {
-                    bolinha.setVisible(false); // Torna a ImageView O invisível quando clicada
-                });
+	        // Convertendo as coordenadas do mouse para as coordenadas do ImageView
+	        Point2D localCoords = tabuleiro.sceneToLocal(xMouse, yMouse);
+	        double xImageView = localCoords.getX();
+	        double yImageView = localCoords.getY();
 
-                stackPane.getChildren().add(xzinho);
-                stackPane.getChildren().add(bolinha);
+	      //  System.out.println("Clique dentro do ImageView: x = " + xImageView + ", y = " + yImageView);
+	        
+	        // Procura o quadrante correspondente ao clique do mouse
+	        Quadrante quadrante = procurarQuadrante(xImageView, yImageView);
+
+	       //x ou o 
+	       ImageView novaImageView=new ImageView();
+	        if (jogo.getJogadorAtual().getSimbolo() =='X') {
+	        	novaImageView=criarXouO(Xframe);
+            } else {
+            	novaImageView=criarXouO(Oframe);
             }
-        }
-    }
+             if(jogo.fazerJogada(quadrante.getLinha(),quadrante.getColuna())==false) {
+            	 VezJogador.setText("jogada inválida!" );
+            }else {
+            	 StackPane.setMargin(novaImageView, new Insets(quadrante.getY()-100, 0, 0, quadrante.getX()-700));
+                 stackPane.getChildren().add(novaImageView);
+                 jogo.alternarJogador();
+            }
+	        
+	       
+            VezJogador.setText("é a vez do jogador "+ jogo.getJogadorAtual().getNome() );
+          
+         
+           
+            if( jogo.verificarVencedor()!=' ') {
+            	if(jogo.getJogadorAtual().getNome().equals(jogo.getJogadorO().getNome())){
+            		
+            		 resetar(true,jogo.getJogadorX().getNome());
+            	}else {
+            	    resetar(true,jogo.getJogadorO().getNome());
+            		} 
+            	
+            	}
+            }
+	       if(jogo.Empate()){
+    		resetar(false,":(");	
+                   
+          
+	    }
 
+	    if (event.getSource() == sair) {
+	        System.exit(0);
+	    }
+
+	    if (event.getSource() == reiniciar) {
+	    	retornar();
+               
+	    }
+	}
+
+	 @FXML
+	 void initialize() {
+		 Xframe.setVisible(false);
+		 Oframe.setVisible(false);
+	 }
 }

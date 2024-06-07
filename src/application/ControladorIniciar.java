@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -47,18 +47,21 @@ public class ControladorIniciar {
 
     @FXML
     void AcaoDoInicial(MouseEvent event)throws IOException  {
+    	if(event.getSource()==sair) {
+            System.exit(0);    		
+    	}
         if (event.getSource() == fieldjogador1) {
-            System.out.println("Clicou em jogador1Img");
+         //   System.out.println("Clicou em jogador1Img");
             clicked1=1;
             abrirCampoNome(fieldjogador1, "Jogador 1");
         } else if (event.getSource() == fieldJogador2) {
-            System.out.println("Clicou em jogador2Img");
+          //  System.out.println("Clicou em jogador2Img");
             clicked2=1;
             abrirCampoNome(fieldJogador2, "Jogador 2");
         } else if (event.getSource() == comecar) {
-            System.out.println("Clicou em comecar");
+          // System.out.println("Clicou em comecar");
             if (jogador1 != null && jogador2 != null) {
-                System.out.println("Clicou em comecar");
+               /// System.out.println("Clicou em comecar");
             
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("tabuleiro.fxml"));
                 Parent root = loader.load();
@@ -68,9 +71,10 @@ public class ControladorIniciar {
                 ControladorTabuleiro controller = loader.getController();
                 Jogo jogo= new Jogo(jogador1,jogador2);
                 controller.setJogo(jogo);
+                controller.setTextoPlayerInicial(jogador1);
             } else {
                 // Informa aos jogadores que eles precisam inserir seus nomes
-                System.out.println("Por favor, insira o nome de ambos os jogadores.");
+               // System.out.println("Por favor, insira o nome de ambos os jogadores.");
             }
         }
     }
@@ -93,8 +97,11 @@ public class ControladorIniciar {
                 if (!nome.isEmpty()) {
                     if (textField == fieldjogador1) {
                         jogador1 = new Jogador(nome);
+                        jogador1.setSimbolo('X');
+                        
                     } else if (textField == fieldJogador2) {
                         jogador2 = new Jogador(nome);
+                        jogador2.setSimbolo('O');
                     }
                 }
             }

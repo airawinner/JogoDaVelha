@@ -37,9 +37,7 @@
             <Image url="@../../img/jogador2.png" />
          </image>
       </ImageView>
-      <TextField fx:id="fieldjogador1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#AcaoDoInicial" prefHeight="33.0" prefWidth="237.0" translateX="-150.0" translateY="20.0" 
-      style="-fx-background-color: pink;" />
-     <TextField fx:id="fieldJogador2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#AcaoDoInicial" prefHeight="33.0" prefWidth="237.0" translateX="130.0" translateY="20.0" 
-      style="-fx-background-color: pink;" />
+      <TextField fx:id="fieldjogador1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#AcaoDoInicial" prefHeight="33.0" prefWidth="237.0" style="-fx-background-color: pink;" translateX="-150.0" translateY="20.0" />
+     <TextField fx:id="fieldJogador2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#AcaoDoInicial" prefHeight="33.0" prefWidth="237.0" style="-fx-background-color: pink;" translateX="130.0" translateY="20.0" />
      </children>
 </StackPane>

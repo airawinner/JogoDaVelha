@@ -1,4 +1,4 @@
-module JogoDaVelha {
+module Velha {
 	requires javafx.controls;
 	requires javafx.fxml;
 	requires javafx.graphics;

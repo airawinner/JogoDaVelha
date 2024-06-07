@@ -38,17 +38,25 @@ public class Jogo {
         this.jogadorO = new Jogador(nomeJogadorO, 'O');
         this.jogadorAtual = jogadorX; // Começa com o jogador X
     }
-    public Jogo(Jogador jogador1, Jogador jogador2) {
-        this.tabuleiro = new Tabuleiro();
-        this.jogadorX = jogador1;
-        this.jogadorO = jogador2;
-        this.jogadorAtual = jogadorX; // Começa com o jogador X
-    }
-
+	 public Jogo(Jogador jogadorX, Jogador jogadorO) {
+	        this.jogadorX = jogadorX;
+	        this.jogadorO = jogadorO;
+	        this.jogadorAtual = jogadorX; // Define o jogador inicial
+	        this.tabuleiro = new Tabuleiro();
+	    }
     public void adicionarJogador(Jogador jogador1,Jogador jogador2) {
     	this.jogadorO=jogador1;
     	this.jogadorX=jogador2;
     	
+    }
+    public boolean Empate() {
+    	// System.out.println("me valida");
+     if (tabuleiro.tabuleiroCheio()==true && verificarVencedorBool()==false ) {
+    	
+    	 return true;
+    	 
+     }
+     return false;
     }
     public void alternarJogador() {
         if (jogadorAtual == jogadorX) {
@@ -59,10 +67,25 @@ public class Jogo {
     }
 
     public boolean fazerJogada(int linha, int coluna) {
-        return tabuleiro.fazerJogada(linha, coluna, jogadorAtual.getSimbolo());
+      //  System.out.println("Tentando fazer jogada na linha " + linha + ", coluna " + coluna);
+        if (tabuleiro.fazerJogada(linha, coluna, jogadorAtual.getSimbolo())) {
+            // Jogada bem-sucedida
+        
+       //     System.out.println("Jogada bem-sucedida: linha " + linha + ", coluna " + coluna);
+        	return true;
+        } else {
+        	
+            // Jogada inválida
+          //  System.out.println("Jogada inválida: linha " + linha + ", coluna " + coluna);
+            return false;
+        }
+      
     }
 
     public char verificarVencedor() {
         return tabuleiro.verificarVencedor();
+    }
+    private boolean verificarVencedorBool() {
+    	return tabuleiro.verificarVencedorBool();
     }
 }
